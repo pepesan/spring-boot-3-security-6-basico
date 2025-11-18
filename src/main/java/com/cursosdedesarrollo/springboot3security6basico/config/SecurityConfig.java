@@ -26,9 +26,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Consola H2 sin autenticación
                         .requestMatchers("/h2-console/**").permitAll()
-                        // Acceso por roles
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/user/**").hasRole("USER")
                         // (Opcional) recursos estáticos públicos
                         .requestMatchers(
                                 "/css/**",
@@ -36,7 +33,9 @@ public class SecurityConfig {
                                 "/images/**",
                                 "/webjars/**"
                         ).permitAll()
-
+                        // Acceso por roles
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/user/**").hasRole("USER")
                         // El resto, autenticado
                         .anyRequest().authenticated()
                 )
