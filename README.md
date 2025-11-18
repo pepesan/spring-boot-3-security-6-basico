@@ -24,11 +24,38 @@ Para ejecutar este proyecto localmente, sigue estos pasos:
 
 ## Login
 La aplicación utiliza seguridad básica proporcionada por Spring Security. Puedes iniciar sesión con las siguientes credenciales predeterminadas:
-- Usuario: `user`
-- Contraseña: Debes revisar la consola donde se ejecuta la aplicación para ver la contraseña generada automáticamente.
+- Usuario: `admin`, Contraseña: `admin`
+- Usuario: `pepesan`, Contraseña: `password`
 
 ## Redirección
 Después de iniciar sesión correctamente, serás redirigido a la página principal de la aplicación.
 
+## Acceso a la BBDD via consola web
 
+Pendiente de que nos deje entrar con spring security...
+
+
+La aplicación incluye una consola web para acceder a la base de datos H2. Puedes acceder a ella en `http://localhost:8080/h2-console`. Utiliza las siguientes configuraciones para conectarte:
+- JDBC URL: `jdbc:h2:mem:mydb`
+- Usuario: `sa`
+- Contraseña: (deja este campo vacío)
+- Driver Class: `org.h2.Driver`
+
+
+## Acceso a BBDD via Security
+
+Hemos creamos unas entidades de ejemplo y un repositorio para acceder a ellas.
+User y Role y sus respectivos repositorios.
+
+Para configurar el acceso a la base de datos, hemos creado un servicio que implementa UserDetailsService de Spring Security.
+Este servicio carga los detalles del usuario desde la base de datos para la autenticación y autorización.
+Puedes personalizar este servicio para adaptarlo a tus necesidades específicas de seguridad y gestión de usuarios.
+
+## Usuarios por defecto
+Al iniciar la aplicación, se crean automáticamente dos usuarios por defecto en la base de datos:
+- Usuario: `admin`, Contraseña: `admin`, Rol: `ROLE_ADMIN`\
+- Usuario: `pepesan`, Contraseña: `password`, Rol: `ROLE_USER`
+
+Estos usuarios pueden ser utilizados para probar la funcionalidad de seguridad de la aplicación.
+Y están definidos en el fichero data.sql de resources.
    
