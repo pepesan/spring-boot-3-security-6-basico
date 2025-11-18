@@ -42,11 +42,15 @@ public class SecurityConfig {
                 )
 
                 // Login por formulario (usa el login por defecto de Spring Security)
+                // login por defecto en /login
+                // Es Spring Security 6 la que configura y gestiona el formulario
                 .formLogin(form -> form
                         .permitAll()
                 )
 
                 // Logout por defecto
+                // logout por defecto en /logout
+                // Es Spring Security 6 la que gestiona el logout
                 .logout(logout -> logout
                         .permitAll()
                 );
