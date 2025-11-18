@@ -27,6 +27,13 @@ La aplicación utiliza seguridad básica proporcionada por Spring Security. Pued
 - Usuario: `admin`, Contraseña: `admin`
 - Usuario: `pepesan`, Contraseña: `password`
 
+Las contraseñas están almacenadas utilizando el codificador BCrypt para mayor seguridad.
+Puedes generar contraseñas codificadas utilizando la web https://bcrypt-generator.com/
+Metiendo la contraseña en texto plano, estableciendo un round o cost factor de 10, pulsando el botón de Generate hash y copiando el resultado en el fichero data.sql
+con la cabecera {bcrypt} antes del hash generado.
+
+
+
 ## Redirección
 Después de iniciar sesión correctamente, serás redirigido a la página principal de la aplicación.
 
