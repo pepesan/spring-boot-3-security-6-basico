@@ -32,8 +32,6 @@ Después de iniciar sesión correctamente, serás redirigido a la página princi
 
 ## Acceso a la BBDD via consola web
 
-Pendiente de que nos deje entrar con spring security...
-
 
 La aplicación incluye una consola web para acceder a la base de datos H2. Puedes acceder a ella en `http://localhost:8080/h2-console`. Utiliza las siguientes configuraciones para conectarte:
 - JDBC URL: `jdbc:h2:mem:mydb`
@@ -58,4 +56,24 @@ Al iniciar la aplicación, se crean automáticamente dos usuarios por defecto en
 
 Estos usuarios pueden ser utilizados para probar la funcionalidad de seguridad de la aplicación.
 Y están definidos en el fichero data.sql de resources.
+
+## Definición de Seguridad
+Hemos configurado la seguridad de la aplicación utilizando Spring Security.
+La configuración incluye la definición de URLS públicas y protegidas, así como los roles necesarios para
+acceder a las diferentes partes de la aplicación.
+
+Todo esto está definido en la clase SecurityConfig.java.
+
+
+## URLS públicas
+Hemos definido las siguientes URLS como públicas en la aplicación:
+- `/h2-console/**`: Acceso permitido para todos los usuarios, sin necesidad de autenticación.
+- `/login`: Acceso permitido para todos los usuarios, sin necesidad de autenticación.
+- `/logout`: Acceso permitido para todos los usuarios, sin necesidad de autenticación.
+
+## URLS protegidas
+Hemos protegido las siguientes URLS en la aplicación:
+- `/admin/**`: Acceso restringido solo para usuarios con el rol `ROLE_ADMIN`.
+- `/user/**`: Acceso restringido solo para usuarios con el rol `ROLE_USER`.
+
    
